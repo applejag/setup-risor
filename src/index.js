@@ -23,8 +23,8 @@ async function run() {
 		}
 	}
 
-	core.info(`Downloading Risor ${version}`);
 	const downloadUrl = getDownloadUrl(version);
+	core.info(`Downloading Risor ${version} from ${downloadUrl}`);
 	const downloadPath = await tc.downloadTool(downloadUrl);
 	const extractedPath = await extract(downloadPath);
 
