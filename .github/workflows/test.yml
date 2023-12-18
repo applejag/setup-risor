@@ -11,7 +11,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: ./
+      - name: Setup Risor
+        uses: ./
 
       - shell: risor {0}
         run: |
