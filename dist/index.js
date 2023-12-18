@@ -30516,10 +30516,13 @@ async function run() {
   if (cache) {
     const risorDir = tc.find('risor', version);
     if (risorDir) {
-      core.info(`Found Risor@${version} in cache: ${risorDir}`);
+      core.info(`Found Risor@${version} in tool cache: ${risorDir}`);
       core.addPath(risorDir);
       return;
     }
+    core.info(
+      `Did not find Risor@${version} in tool cache. Will try download it.`,
+    );
   }
 
   const downloadUrl = getDownloadUrl(version);
@@ -30530,6 +30533,7 @@ async function run() {
   if (cache) {
     const toolPath = await tc.cacheDir(extractedPath, 'risor', version);
     core.addPath(toolPath);
+    core.info(`Cached Risor@${version} in tool cache`);
   } else {
     core.addPath(extractedPath);
   }

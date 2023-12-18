@@ -4,6 +4,7 @@
   "description": "GitHub Action to install Risor <https://risor.io/>",
   "main": "index.js",
   "scripts": {
+    "all": "npm run format && npm run build",
     "build": "ncc build src/index.js --license licenses.txt",
     "format": "prettier . --write"
   },
