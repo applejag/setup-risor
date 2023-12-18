@@ -8,7 +8,7 @@ inputs:
   version:
     description: Version of Risor to install
     required: true
-    default: 'true'
+    default: 'latest'
 runs:
   using: node20
   main: dist/index.js
