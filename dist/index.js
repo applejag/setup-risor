@@ -30550,7 +30550,7 @@ async function extract(file) {
  */
 async function findLatestVersion() {
 	try {
-		const httpClient = http.HttpClient();
+		const httpClient = new http.HttpClient();
 		const response = await httpClient.getJson(`https://github.com/risor-io/risor/releases/latest`)
 		const version = response.result.tag_name;
 		core.info(`Found latest version of Risor: ${version}`);
