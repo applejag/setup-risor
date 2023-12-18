@@ -13,6 +13,6 @@ jobs:
 
       - uses: ./
 
-      - shell: risor
+      - shell: risor -- {0}
         run: |
           fmt.println("Hello world from Risor :)")
