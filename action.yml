@@ -1,5 +1,8 @@
 name: Setup Risor
 description: Installs Risor
+branding:
+  icon: chevron-right
+  color: black
 inputs:
   cache:
     description: Cache dependencies
