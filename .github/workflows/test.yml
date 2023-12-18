@@ -1,0 +1,18 @@
+name: Test action
+
+on:
+  push:
+    branches: [main]
+  pull_request: {}
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ./
+
+      - shell: risor
+        run: |
+          fmt.println("Hello world from Risor :)")
