@@ -4,11 +4,11 @@ inputs:
   cache:
     description: Cache dependencies
     required: false
-    default: 'true'
+    default: "true"
   version:
     description: Version of Risor to install
     required: true
-    default: 'latest'
+    default: "latest"
 runs:
   using: node20
   main: dist/index.js

@@ -7,11 +7,11 @@ on:
       - edited
   push:
     tags:
-      - 'v?[0-9]+.[0-9]+.[0-9]+'
+      - "v?[0-9]+.[0-9]+.[0-9]+"
     branches-ignore:
-      - '**'
+      - "**"
     paths-ignore:
-      - '**'
+      - "**"
 
 jobs:
   actions-tagger:

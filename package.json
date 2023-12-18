@@ -4,7 +4,8 @@
   "description": "GitHub Action to install Risor <https://risor.io/>",
   "main": "index.js",
   "scripts": {
-    "build": "ncc build src/index.js --license licenses.txt"
+    "build": "ncc build src/index.js --license licenses.txt",
+    "format": "prettier . --write"
   },
   "repository": {
     "type": "git",
@@ -27,6 +28,7 @@
     "@actions/tool-cache": "^2.0.1"
   },
   "devDependencies": {
-    "@vercel/ncc": "^0.38.1"
+    "@vercel/ncc": "^0.38.1",
+    "prettier": "3.1.1"
   }
 }
