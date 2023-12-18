@@ -10,7 +10,7 @@ See [action.yml](./action.yml)
 
 ```yaml
 steps:
-  - uses: applejag/setup-risor@main
+  - uses: applejag/setup-risor@v0
 
   - shell: risor {0}
     run: |
