@@ -1,0 +1,24 @@
+{
+  "name": "setup-risor",
+  "version": "1.0.0",
+  "description": "GitHub Action to install Risor <https://risor.io/>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/applejag/setup-risor.git"
+  },
+  "keywords": [
+    "actions",
+    "risor",
+    "setup"
+  ],
+  "author": "Applejag",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/applejag/setup-risor/issues"
+  },
+  "homepage": "https://github.com/applejag/setup-risor#readme"
+}
