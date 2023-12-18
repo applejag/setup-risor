@@ -9,7 +9,5 @@ on:
 jobs:
   actions-tagger:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
       - uses: Actions-R-Us/actions-tagger@v2
