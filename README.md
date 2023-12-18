@@ -28,6 +28,16 @@ It uses [@actions/tool-cache](https://github.com/actions/toolkit/tree/main/packa
 which stores cache differently than the [actions/cache](https://github.com/actions/cache)
 action.
 
+Tool-cache is stored on a per-host basis, instead of on a per-repo basis.
+This means that you might get a lot of cache-misses, but that's because your
+jobs are being run on different action runner hosts.
+It also means that the cache won't be visible in the "Caches" view inside
+your repository's "Actions" tab.
+
+It also means that if you're using self-hosted runners, then you need to make
+sure you configure them to make use of hosted tool cache:
+<https://docs.github.com/en/github-ae@latest/admin/github-actions/managing-access-to-actions-from-githubcom/setting-up-the-tool-cache-on-self-hosted-runners-without-internet-access#about-the-included-setup-actions-and-the-runner-tool-cache>
+
 ## License
 
 This repository is licensed under the MIT license.
