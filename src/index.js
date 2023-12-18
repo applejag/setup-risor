@@ -77,18 +77,18 @@ export function getDownloadUrl(version) {
 
 	switch (true) {
 		case operatingSystem == LINUX && arch == ARM64:
-			return `https://github.com/risor-io/risor/releases/${version}/risor-Linux-arm64.tar.gz`;
+			return `https://github.com/risor-io/risor/releases/${version}/risor_Linux_arm64.tar.gz`;
 		case operatingSystem == LINUX:
-			return `https://github.com/risor-io/risor/releases/${version}/risor-Linux-amd64.tar.gz`;
+			return `https://github.com/risor-io/risor/releases/${version}/risor_Linux_x86_64.tar.gz`;
 
 		case operatingSystem == MAC_OS && arch == ARM64:
-			return `https://github.com/risor-io/risor/releases/${version}/risor-Darwin-arm64.tar.gz`;
+			return `https://github.com/risor-io/risor/releases/${version}/risor_Darwin_arm64.tar.gz`;
 		case operatingSystem == MAC_OS:
-			return `https://github.com/risor-io/risor/releases/${version}/risor-Darwin-amd64.tar.gz`;
+			return `https://github.com/risor-io/risor/releases/${version}/risor_Darwin_x86_64.tar.gz`;
 
 		case operatingSystem == WINDOWS:
 		default:
-			return `https://github.com/risor-io/risor/releases/${version}/risor-Windows-amd64.zip`;
+			return `https://github.com/risor-io/risor/releases/${version}/risor_Windows_x86_64.zip`;
 	}
 }
 
