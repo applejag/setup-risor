@@ -1,0 +1,19 @@
+name: Prettier
+
+on:
+  push:
+    branches: [main]
+  pull_request: {}
+
+jobs:
+  prettier:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: EPMatt/reviewdog-action-prettier@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          reporter: github-pr-review
+          level: warning
+          fail_on_error: true
