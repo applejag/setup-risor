@@ -12,9 +12,9 @@ jobs:
       fail-fast: false
       matrix:
         os:
-        - ubuntu-latest
-        - macOS-latest
-        - windows-latest
+          - ubuntu-latest
+          - macOS-latest
+          - windows-latest
     steps:
       - uses: actions/checkout@v4
 
