@@ -4,7 +4,7 @@ const core = require('@actions/core');
 const tc = require('@actions/tool-cache');
 
 // Used as fallback if getting latest version fails.
-const latestKnownVersion = 'v1.2.0';
+const latestKnownVersion = 'v1.3.2';
 
 async function run() {
   const cache = core.getBooleanInput('cache');
