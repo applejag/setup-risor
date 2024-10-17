@@ -30211,7 +30211,7 @@ const core = __nccwpck_require__(7484);
 const tc = __nccwpck_require__(3472);
 
 // Used as fallback if getting latest version fails.
-const latestKnownVersion = 'v1.6.0';
+const latestKnownVersion = 'v1.7.0';
 
 async function run() {
   const cache = core.getBooleanInput('cache');
