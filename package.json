@@ -24,9 +24,9 @@
   },
   "homepage": "https://github.com/applejag/setup-risor#readme",
   "dependencies": {
-    "@actions/core": "^2.0.1",
+    "@actions/core": "^2.0.2",
     "@actions/http-client": "^3.0.0",
-    "@actions/tool-cache": "^2.0.2"
+    "@actions/tool-cache": "^3.0.0"
   },
   "devDependencies": {
     "@vercel/ncc": "^0.38.4",
