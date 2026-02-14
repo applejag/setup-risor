@@ -20099,7 +20099,12 @@ async function extract(file) {
 }
 async function findLatestVersion() {
 	try {
-		const version = (await new import_lib.HttpClient().getJson("https://github.com/deepnoodle-ai/risor/releases/latest")).result.tag_name;
+		const response = await new import_lib.HttpClient().getJson("https://github.com/deepnoodle-ai/risor/releases/latest");
+		const version = response.result?.tag_name;
+		if (!version) {
+			warning(`No latest Risor release was found. Raw response: ${response.result}`);
+			return latestKnownVersion;
+		}
 		info(`Found latest version of Risor: ${version}`);
 		return version;
 	} catch (err) {
