@@ -20070,7 +20070,7 @@ var require_lib = /* @__PURE__ */ __commonJSMin(((exports) => {
 //#endregion
 //#region src/index.ts
 var import_lib = require_lib();
-const latestKnownVersion = "v1.8.1";
+const latestKnownVersion = "v2.0.1";
 async function run() {
 	const cache = getBooleanInput("cache");
 	var version = getInput("version", { required: true });
