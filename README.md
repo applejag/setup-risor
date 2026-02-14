@@ -14,11 +14,15 @@ steps:
 
   - shell: risor {0}
     run: |
-      array := ["gophers", "are", "burrowing", "rodents"]
+      let orders = [
+        {status: "pending", total: 10},
+        {status: "pending", total: 30},
+        {status: "completed", total: 550},
+        {status: "cancelled", total: 90},
+        {status: "pending", total: 5},
+      ]
 
-      sentence := array | strings.join(" ") | strings.to_upper
-
-      print(sentence)
+      orders.filter(o => o.status == "pending").map(o => o.total).reduce(0, (a, b) => a + b)
 ```
 
 ## Caching
