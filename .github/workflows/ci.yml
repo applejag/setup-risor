@@ -1,0 +1,102 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request: {}
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Install dependencies
+        run: npm ci --ignore-scripts
+
+      - name: Format the code
+        run: npm run format:check
+
+      - name: Lint the code
+        run: npm run lint
+
+  check-dist:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Install dependencies
+        run: npm ci --ignore-scripts
+
+      - name: Rebuild the dist
+        run: npm run build
+
+      - name: Compare the expected and actual dist directories
+        run: |
+          if [ "$(git diff --ignore-space-at-eol ${{inputs.dist-path}} | wc -l)" -gt "0" ]; then
+            echo 'Some files needs to be rebuilt (`npm run build`). See the status below:' >> $GITHUB_STEP_SUMMARY
+            echo '```diff' >> $GITHUB_STEP_SUMMARY
+            git diff --stat >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+            exit 1
+          fi
+
+  test-v2:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-latest
+          - macOS-latest
+          - windows-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Setup Risor
+        uses: ./
+        with:
+          version: latest
+
+      - name: Run Risor script
+        shell: risor {0}
+        run: |
+          let orders = [
+            {status: "pending", total: 10},
+            {status: "pending", total: 30},
+            {status: "completed", total: 550},
+            {status: "cancelled", total: 90},
+            {status: "pending", total: 5},
+          ]
+
+          orders.filter(o => o.status == "pending").map(o => o.total).reduce(0, (a, b) => a + b)
+
+  test-v1:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-latest
+          - macOS-latest
+          - windows-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Setup Risor
+        uses: ./
+        with:
+          version: v1.8.1
+
+      - name: Run Risor script
+        shell: risor {0}
+        run: |
+          array := ["gophers", "are", "burrowing", "rodents"]
+
+          sentence := array | strings.join(" ") | strings.to_upper
+
+          print(sentence)

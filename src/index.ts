@@ -1,7 +1,6 @@
-const os = require('os');
-const http = require('@actions/http-client');
-const core = require('@actions/core');
-const tc = require('@actions/tool-cache');
+import * as core from '@actions/core';
+import * as tc from '@actions/tool-cache';
+import { HttpClient } from '@actions/http-client';
 
 // Used as fallback if getting latest version fails.
 const latestKnownVersion = 'v1.8.1';
@@ -21,9 +20,7 @@ async function run() {
       core.addPath(risorDir);
       return;
     }
-    core.info(
-      `Did not find Risor@${version} in tool cache. Will try download it.`,
-    );
+    core.info(`Did not find Risor@${version} in tool cache. Will try download it.`);
   }
 
   const downloadUrl = getDownloadUrl(version);
@@ -40,48 +37,36 @@ async function run() {
   }
 }
 
-/**
- * @param {string} file
- */
-async function extract(file) {
+async function extract(file: string) {
   if (file.endsWith('.zip')) {
     return tc.extractZip(file);
   }
   return tc.extractTar(file);
 }
 
-/**
- * @returns {Promise<string>}
- */
-async function findLatestVersion() {
+async function findLatestVersion(): Promise<string> {
   try {
-    const httpClient = new http.HttpClient();
+    const httpClient = new HttpClient();
     const response = await httpClient.getJson(
-      `https://github.com/risor-io/risor/releases/latest`,
+      'https://github.com/deepnoodle-ai/risor/releases/latest',
     );
     const version = response.result.tag_name;
     core.info(`Found latest version of Risor: ${version}`);
     return version;
   } catch (err) {
-    core.warning(
-      `Error while fetching latest Risor release: ${err.toString()}`,
-    );
+    core.warning(`Error while fetching latest Risor release: ${err?.toString()}`);
     return latestKnownVersion;
   }
 }
 
-const LINUX = 'Linux';
-const MAC_OS = 'Darwin';
-const WINDOWS = 'Windows_NT';
+const LINUX: NodeJS.Platform = 'linux';
+const MAC_OS: NodeJS.Platform = 'darwin';
+const WINDOWS: NodeJS.Platform = 'win32';
 const ARM64 = 'arm64';
 
-/**
- * @param {string} version
- * @returns {string}
- */
-export function getDownloadUrl(version) {
-  const arch = os.arch();
-  const operatingSystem = os.type();
+export function getDownloadUrl(version: string): string {
+  const arch = core.platform.arch;
+  const operatingSystem = core.platform.platform;
 
   switch (true) {
     case operatingSystem == LINUX && arch == ARM64:
