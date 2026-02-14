@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "module": "node16",
+    "moduleResolution": "node16",
+    "strict": true,
+    "sourceMap": false,
+    "noImplicitAny": true,
+    "esModuleInterop": true
+  },
+  "exclude": ["dist"]
+}

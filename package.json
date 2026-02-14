@@ -4,9 +4,12 @@
   "description": "GitHub Action to install Risor <https://risor.io/>",
   "main": "index.js",
   "scripts": {
-    "all": "npm run format && npm run build",
-    "build": "ncc build src/index.js --license licenses.txt",
-    "format": "prettier . --write"
+    "all": "npm run format && npm run lint && npm run build",
+    "build": "rolldown -c rolldown.config.mjs",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check",
+    "lint": "oxlint --deny-warnings",
+    "lint:fix": "oxlint --deny-warnings --fix"
   },
   "repository": {
     "type": "git",
@@ -29,7 +32,9 @@
     "@actions/tool-cache": "^3.0.0"
   },
   "devDependencies": {
-    "@vercel/ncc": "^0.38.4",
-    "prettier": "3.8.1"
+    "@types/node": "^25.2.3",
+    "oxfmt": "^0.32.0",
+    "oxlint": "^1.47.0",
+    "rolldown": "^1.0.0-rc.4"
   }
 }
