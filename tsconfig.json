@@ -2,12 +2,16 @@
   "compilerOptions": {
     "outDir": "./dist",
     "rootDir": "./src",
-    "module": "node16",
-    "moduleResolution": "node16",
+    "target": "ESNext",
+    "lib": ["ESNext"],
+    "moduleResolution": "bundler",
     "strict": true,
     "sourceMap": false,
+    "esModuleInterop": true,
     "noImplicitAny": true,
-    "esModuleInterop": true
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
   },
-  "exclude": ["dist"]
+  "include": ["src/**/*"],
+  "exclude": ["**/*.test.ts", "dist/**", "node_modules/**"]
 }

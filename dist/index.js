@@ -1,3 +1,4 @@
+Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
 //#region \0rolldown/runtime.js
 var __create = Object.create;
 var __defProp = Object.defineProperty;
@@ -24,12 +25,9 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
 	value: mod,
 	enumerable: true
 }) : target, mod));
-var __require = /* @__PURE__ */ ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof require !== "undefined" ? require : a)[b] }) : x)(function(x) {
-	if (typeof require !== "undefined") return require.apply(this, arguments);
-	throw Error("Calling `require` for \"" + x + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
-});
 
 //#endregion
+
 //#region node_modules/@actions/core/lib/utils.js
 var require_utils$1 = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
@@ -110,7 +108,7 @@ var require_command = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.issueCommand = issueCommand;
 	exports.issue = issue;
-	const os$5 = __importStar(__require("os"));
+	const os$5 = __importStar(require("os"));
 	const utils_1 = require_utils$1();
 	/**
 	* Issues a command to the GitHub Actions runner
@@ -233,9 +231,9 @@ var require_file_command = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.issueFileCommand = issueFileCommand;
 	exports.prepareKeyValueMessage = prepareKeyValueMessage;
-	const crypto$1 = __importStar(__require("crypto"));
-	const fs$3 = __importStar(__require("fs"));
-	const os$4 = __importStar(__require("os"));
+	const crypto$1 = __importStar(require("crypto"));
+	const fs$3 = __importStar(require("fs"));
+	const os$4 = __importStar(require("os"));
 	const utils_1 = require_utils$1();
 	function issueFileCommand(command, message) {
 		const filePath = process.env[`GITHUB_${command}`];
@@ -309,13 +307,13 @@ var require_proxy = /* @__PURE__ */ __commonJSMin(((exports) => {
 //#endregion
 //#region node_modules/tunnel/lib/tunnel.js
 var require_tunnel$1 = /* @__PURE__ */ __commonJSMin(((exports) => {
-	__require("net");
-	var tls = __require("tls");
-	var http$2 = __require("http");
-	var https$1 = __require("https");
-	var events$1 = __require("events");
-	__require("assert");
-	var util$2 = __require("util");
+	require("net");
+	var tls = require("tls");
+	var http$2 = require("http");
+	var https$1 = require("https");
+	var events$1 = require("events");
+	require("assert");
+	var util$2 = require("util");
 	exports.httpOverHttp = httpOverHttp;
 	exports.httpsOverHttp = httpsOverHttp;
 	exports.httpOverHttps = httpOverHttps;
@@ -912,15 +910,15 @@ var require_constants$4 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 //#endregion
 //#region node_modules/undici/lib/core/util.js
 var require_util$6 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-	const assert$19 = __require("assert");
+	const assert$19 = require("assert");
 	const { kDestroyed, kBodyUsed } = require_symbols$4();
-	const { IncomingMessage } = __require("http");
-	const stream$1 = __require("stream");
-	const net$2 = __require("net");
+	const { IncomingMessage } = require("http");
+	const stream$1 = require("stream");
+	const net$2 = require("net");
 	const { InvalidArgumentError } = require_errors();
-	const { Blob: Blob$4 } = __require("buffer");
-	const nodeUtil = __require("util");
-	const { stringify } = __require("querystring");
+	const { Blob: Blob$4 } = require("buffer");
+	const nodeUtil = require("util");
+	const { stringify } = require("querystring");
 	const { headerNameLowerCasedRecord } = require_constants$4();
 	const [nodeMajor, nodeMinor] = process.versions.node.split(".").map((v) => Number(v));
 	function nop() {}
@@ -1105,7 +1103,7 @@ var require_util$6 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	}
 	let ReadableStream;
 	function ReadableStreamFrom(iterable) {
-		if (!ReadableStream) ReadableStream = __require("stream/web").ReadableStream;
+		if (!ReadableStream) ReadableStream = require("stream/web").ReadableStream;
 		if (ReadableStream.from) return ReadableStream.from(convertIterableToBuffer(iterable));
 		let iterator;
 		return new ReadableStream({
@@ -1309,8 +1307,8 @@ var require_sbmh = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	* Based heavily on the Streaming Boyer-Moore-Horspool C++ implementation
 	* by Hongli Lai at: https://github.com/FooBarWidget/boyer-moore-horspool
 	*/
-	const EventEmitter$2 = __require("node:events").EventEmitter;
-	const inherits$5 = __require("node:util").inherits;
+	const EventEmitter$2 = require("node:events").EventEmitter;
+	const inherits$5 = require("node:util").inherits;
 	function SBMH(needle) {
 		if (typeof needle === "string") needle = Buffer.from(needle);
 		if (!Buffer.isBuffer(needle)) throw new TypeError("The needle has to be a String or a Buffer.");
@@ -1403,8 +1401,8 @@ var require_sbmh = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 //#endregion
 //#region node_modules/@fastify/busboy/deps/dicer/lib/PartStream.js
 var require_PartStream = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-	const inherits$4 = __require("node:util").inherits;
-	const ReadableStream$1 = __require("node:stream").Readable;
+	const inherits$4 = require("node:util").inherits;
+	const ReadableStream$1 = require("node:stream").Readable;
 	function PartStream(opts) {
 		ReadableStream$1.call(this, opts);
 	}
@@ -1426,8 +1424,8 @@ var require_getLimit = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 //#endregion
 //#region node_modules/@fastify/busboy/deps/dicer/lib/HeaderParser.js
 var require_HeaderParser = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-	const EventEmitter$1 = __require("node:events").EventEmitter;
-	const inherits$3 = __require("node:util").inherits;
+	const EventEmitter$1 = require("node:events").EventEmitter;
+	const inherits$3 = require("node:util").inherits;
 	const getLimit = require_getLimit();
 	const StreamSearch = require_sbmh();
 	const B_DCRLF = Buffer.from("\r\n\r\n");
@@ -1508,8 +1506,8 @@ var require_HeaderParser = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 //#endregion
 //#region node_modules/@fastify/busboy/deps/dicer/lib/Dicer.js
 var require_Dicer = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-	const WritableStream$1 = __require("node:stream").Writable;
-	const inherits$2 = __require("node:util").inherits;
+	const WritableStream$1 = require("node:stream").Writable;
+	const inherits$2 = require("node:util").inherits;
 	const StreamSearch = require_sbmh();
 	const PartStream = require_PartStream();
 	const HeaderParser = require_HeaderParser();
@@ -2340,8 +2338,8 @@ var require_basename = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 //#endregion
 //#region node_modules/@fastify/busboy/lib/types/multipart.js
 var require_multipart = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-	const { Readable: Readable$3 } = __require("node:stream");
-	const { inherits: inherits$1 } = __require("node:util");
+	const { Readable: Readable$3 } = require("node:stream");
+	const { inherits: inherits$1 } = require("node:util");
 	const Dicer = require_Dicer();
 	const parseParams = require_parseParams();
 	const decodeText = require_decodeText();
@@ -2899,8 +2897,8 @@ var require_urlencoded = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 //#endregion
 //#region node_modules/@fastify/busboy/lib/main.js
 var require_main = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-	const WritableStream = __require("node:stream").Writable;
-	const { inherits } = __require("node:util");
+	const WritableStream = require("node:stream").Writable;
+	const { inherits } = require("node:util");
 	const Dicer = require_Dicer();
 	const MultipartParser = require_multipart();
 	const UrlencodedParser = require_urlencoded();
@@ -2959,7 +2957,7 @@ var require_main = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 //#endregion
 //#region node_modules/undici/lib/fetch/constants.js
 var require_constants$3 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-	const { MessageChannel, receiveMessageOnPort } = __require("worker_threads");
+	const { MessageChannel, receiveMessageOnPort } = require("worker_threads");
 	const corsSafeListedMethods = [
 		"GET",
 		"HEAD",
@@ -3217,15 +3215,15 @@ var require_global$1 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 var require_util$5 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	const { redirectStatusSet, referrerPolicySet: referrerPolicyTokens, badPortsSet } = require_constants$3();
 	const { getGlobalOrigin } = require_global$1();
-	const { performance: performance$1 } = __require("perf_hooks");
+	const { performance: performance$1 } = require("perf_hooks");
 	const { isBlobLike, toUSVString, ReadableStreamFrom } = require_util$6();
-	const assert$18 = __require("assert");
-	const { isUint8Array: isUint8Array$1 } = __require("util/types");
+	const assert$18 = require("assert");
+	const { isUint8Array: isUint8Array$1 } = require("util/types");
 	let supportedHashes = [];
 	/** @type {import('crypto')|undefined} */
 	let crypto;
 	try {
-		crypto = __require("crypto");
+		crypto = require("crypto");
 		const possibleRelevantHashes = [
 			"sha256",
 			"sha384",
@@ -3654,7 +3652,7 @@ var require_util$5 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	/** @type {ReadableStream} */
 	let ReadableStream = globalThis.ReadableStream;
 	function isReadableStreamLike(stream) {
-		if (!ReadableStream) ReadableStream = __require("stream/web").ReadableStream;
+		if (!ReadableStream) ReadableStream = require("stream/web").ReadableStream;
 		return stream instanceof ReadableStream || stream[Symbol.toStringTag] === "ReadableStream" && typeof stream.tee === "function";
 	}
 	const MAXIMUM_ARGUMENT_LENGTH = 65535;
@@ -3794,7 +3792,7 @@ var require_symbols$3 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 //#endregion
 //#region node_modules/undici/lib/fetch/webidl.js
 var require_webidl = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-	const { types: types$4 } = __require("util");
+	const { types: types$4 } = require("util");
 	const { hasOwn, toUSVString } = require_util$5();
 	/** @type {import('../../types/webidl').Webidl} */
 	const webidl = {};
@@ -4063,8 +4061,8 @@ var require_webidl = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 //#endregion
 //#region node_modules/undici/lib/fetch/dataURL.js
 var require_dataURL = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-	const assert$17 = __require("assert");
-	const { atob: atob$1 } = __require("buffer");
+	const assert$17 = require("assert");
+	const { atob: atob$1 } = require("buffer");
 	const { isomorphicDecode } = require_util$5();
 	const encoder = new TextEncoder();
 	/**
@@ -4316,8 +4314,8 @@ var require_dataURL = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 //#endregion
 //#region node_modules/undici/lib/fetch/file.js
 var require_file = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-	const { Blob: Blob$3, File: NativeFile$2 } = __require("buffer");
-	const { types: types$3 } = __require("util");
+	const { Blob: Blob$3, File: NativeFile$2 } = require("buffer");
+	const { types: types$3 } = require("util");
 	const { kState } = require_symbols$3();
 	const { isBlobLike } = require_util$5();
 	const { webidl } = require_webidl();
@@ -4493,7 +4491,7 @@ var require_formdata = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	const { kState } = require_symbols$3();
 	const { File: UndiciFile, FileLike, isFileLike } = require_file();
 	const { webidl } = require_webidl();
-	const { Blob: Blob$2, File: NativeFile$1 } = __require("buffer");
+	const { Blob: Blob$2, File: NativeFile$1 } = require("buffer");
 	/** @type {globalThis['File']} */
 	const File = NativeFile$1 ?? UndiciFile;
 	var FormData = class FormData {
@@ -4628,16 +4626,16 @@ var require_body = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	const { kState } = require_symbols$3();
 	const { webidl } = require_webidl();
 	const { DOMException, structuredClone } = require_constants$3();
-	const { Blob: Blob$1, File: NativeFile } = __require("buffer");
+	const { Blob: Blob$1, File: NativeFile } = require("buffer");
 	const { kBodyUsed } = require_symbols$4();
-	const assert$16 = __require("assert");
+	const assert$16 = require("assert");
 	const { isErrored } = require_util$6();
-	const { isUint8Array, isArrayBuffer } = __require("util/types");
+	const { isUint8Array, isArrayBuffer } = require("util/types");
 	const { File: UndiciFile } = require_file();
 	const { parseMIMEType, serializeAMimeType } = require_dataURL();
 	let random;
 	try {
-		const crypto = __require("node:crypto");
+		const crypto = require("node:crypto");
 		random = (max) => crypto.randomInt(0, max);
 	} catch {
 		random = (max) => Math.floor(Math.random(max));
@@ -4648,7 +4646,7 @@ var require_body = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	const textEncoder = new TextEncoder();
 	const textDecoder = new TextDecoder();
 	function extractBody(object, keepalive = false) {
-		if (!ReadableStream) ReadableStream = __require("stream/web").ReadableStream;
+		if (!ReadableStream) ReadableStream = require("stream/web").ReadableStream;
 		let stream = null;
 		if (object instanceof ReadableStream) stream = object;
 		else if (isBlobLike(object)) stream = object.stream();
@@ -4743,7 +4741,7 @@ Content-Type: ${value.type || "application/octet-stream"}\r\n\r\n`);
 	function safelyExtractBody(object, keepalive = false) {
 		if (!ReadableStream)
  // istanbul ignore next
-		ReadableStream = __require("stream/web").ReadableStream;
+		ReadableStream = require("stream/web").ReadableStream;
 		if (object instanceof ReadableStream) {
 			// istanbul ignore next
 			assert$16(!util.isDisturbed(object), "The body has already been consumed.");
@@ -4946,7 +4944,7 @@ Content-Type: ${value.type || "application/octet-stream"}\r\n\r\n`);
 //#region node_modules/undici/lib/core/request.js
 var require_request$1 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	const { InvalidArgumentError, NotSupportedError } = require_errors();
-	const assert$15 = __require("assert");
+	const assert$15 = require("assert");
 	const { kHTTP2BuildRequest, kHTTP2CopyHeaders, kHTTP1BuildRequest } = require_symbols$4();
 	const util = require_util$6();
 	/**
@@ -4967,7 +4965,7 @@ var require_request$1 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	const channels = {};
 	let extractBody;
 	try {
-		const diagnosticsChannel = __require("diagnostics_channel");
+		const diagnosticsChannel = require("diagnostics_channel");
 		channels.create = diagnosticsChannel.channel("undici:request:create");
 		channels.bodySent = diagnosticsChannel.channel("undici:request:bodySent");
 		channels.headers = diagnosticsChannel.channel("undici:request:headers");
@@ -5229,7 +5227,7 @@ var require_request$1 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 //#endregion
 //#region node_modules/undici/lib/dispatcher.js
 var require_dispatcher = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-	const EventEmitter = __require("events");
+	const EventEmitter = require("events");
 	var Dispatcher = class extends EventEmitter {
 		dispatch() {
 			throw new Error("not implemented");
@@ -5364,8 +5362,8 @@ var require_dispatcher_base = /* @__PURE__ */ __commonJSMin(((exports, module) =
 //#endregion
 //#region node_modules/undici/lib/core/connect.js
 var require_connect = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-	const net$1 = __require("net");
-	const assert$14 = __require("assert");
+	const net$1 = require("net");
+	const assert$14 = require("assert");
 	const util = require_util$6();
 	const { InvalidArgumentError, ConnectTimeoutError } = require_errors();
 	let tls;
@@ -5419,7 +5417,7 @@ var require_connect = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 		return function connect({ hostname, host, protocol, port, servername, localAddress, httpSocket }, callback) {
 			let socket;
 			if (protocol === "https:") {
-				if (!tls) tls = __require("tls");
+				if (!tls) tls = require("tls");
 				servername = servername || options.servername || util.getServerName(host) || null;
 				const sessionKey = servername || hostname;
 				const session = sessionCache.get(sessionKey) || null;
@@ -5848,9 +5846,9 @@ var require_constants$2 = /* @__PURE__ */ __commonJSMin(((exports) => {
 var require_RedirectHandler = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	const util = require_util$6();
 	const { kBodyUsed } = require_symbols$4();
-	const assert$13 = __require("assert");
+	const assert$13 = require("assert");
 	const { InvalidArgumentError } = require_errors();
-	const EE$1 = __require("events");
+	const EE$1 = require("events");
 	const redirectableStatusCodes = [
 		300,
 		301,
@@ -5999,10 +5997,10 @@ var require_llhttp_simd_wasm = /* @__PURE__ */ __commonJSMin(((exports, module) 
 //#endregion
 //#region node_modules/undici/lib/client.js
 var require_client = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-	const assert$12 = __require("assert");
-	const net = __require("net");
-	const http$1 = __require("http");
-	const { pipeline: pipeline$1 } = __require("stream");
+	const assert$12 = require("assert");
+	const net = require("net");
+	const http$1 = require("http");
+	const { pipeline: pipeline$1 } = require("stream");
 	const util = require_util$6();
 	const timers = require_timers();
 	const Request = require_request$1();
@@ -6013,7 +6011,7 @@ var require_client = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	/** @type {import('http2')} */
 	let http2;
 	try {
-		http2 = __require("http2");
+		http2 = require("http2");
 	} catch {
 		http2 = { constants: {} };
 	}
@@ -6023,7 +6021,7 @@ var require_client = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	const kClosedResolve = Symbol("kClosedResolve");
 	const channels = {};
 	try {
-		const diagnosticsChannel = __require("diagnostics_channel");
+		const diagnosticsChannel = require("diagnostics_channel");
 		channels.sendHeaders = diagnosticsChannel.channel("undici:client:sendHeaders");
 		channels.beforeConnect = diagnosticsChannel.channel("undici:client:beforeConnect");
 		channels.connectError = diagnosticsChannel.channel("undici:client:connectError");
@@ -7849,8 +7847,8 @@ var require_agent = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 //#endregion
 //#region node_modules/undici/lib/api/readable.js
 var require_readable = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-	const assert$11 = __require("assert");
-	const { Readable: Readable$2 } = __require("stream");
+	const assert$11 = require("assert");
+	const { Readable: Readable$2 } = require("stream");
 	const { RequestAbortedError, NotSupportedError, InvalidArgumentError } = require_errors();
 	const util = require_util$6();
 	const { ReadableStreamFrom, toUSVString } = require_util$6();
@@ -8012,7 +8010,7 @@ var require_readable = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 				}
 				resolve(dst.buffer);
 			} else if (type === "blob") {
-				if (!Blob) Blob = __require("buffer").Blob;
+				if (!Blob) Blob = require("buffer").Blob;
 				resolve(new Blob(body, { type: stream[kContentType] }));
 			}
 			consumeFinish(consume);
@@ -8040,7 +8038,7 @@ var require_readable = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 //#endregion
 //#region node_modules/undici/lib/api/util.js
 var require_util$4 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-	const assert$10 = __require("assert");
+	const assert$10 = require("assert");
 	const { ResponseStatusCodeError } = require_errors();
 	const { toUSVString } = require_util$6();
 	async function getResolveErrorBodyCallback({ callback, body, contentType, statusCode, statusMessage, headers }) {
@@ -8121,7 +8119,7 @@ var require_api_request = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	const { InvalidArgumentError, RequestAbortedError } = require_errors();
 	const util = require_util$6();
 	const { getResolveErrorBodyCallback } = require_util$4();
-	const { AsyncResource: AsyncResource$4 } = __require("async_hooks");
+	const { AsyncResource: AsyncResource$4 } = require("async_hooks");
 	const { addSignal, removeSignal } = require_abort_signal();
 	var RequestHandler = class extends AsyncResource$4 {
 		constructor(opts, callback) {
@@ -8247,11 +8245,11 @@ var require_api_request = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 //#endregion
 //#region node_modules/undici/lib/api/api-stream.js
 var require_api_stream = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-	const { finished, PassThrough: PassThrough$1 } = __require("stream");
+	const { finished, PassThrough: PassThrough$1 } = require("stream");
 	const { InvalidArgumentError, InvalidReturnValueError, RequestAbortedError } = require_errors();
 	const util = require_util$6();
 	const { getResolveErrorBodyCallback } = require_util$4();
-	const { AsyncResource: AsyncResource$3 } = __require("async_hooks");
+	const { AsyncResource: AsyncResource$3 } = require("async_hooks");
 	const { addSignal, removeSignal } = require_abort_signal();
 	var StreamHandler = class extends AsyncResource$3 {
 		constructor(opts, factory, callback) {
@@ -8388,12 +8386,12 @@ var require_api_stream = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 //#endregion
 //#region node_modules/undici/lib/api/api-pipeline.js
 var require_api_pipeline = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-	const { Readable: Readable$1, Duplex, PassThrough } = __require("stream");
+	const { Readable: Readable$1, Duplex, PassThrough } = require("stream");
 	const { InvalidArgumentError, InvalidReturnValueError, RequestAbortedError } = require_errors();
 	const util = require_util$6();
-	const { AsyncResource: AsyncResource$2 } = __require("async_hooks");
+	const { AsyncResource: AsyncResource$2 } = require("async_hooks");
 	const { addSignal, removeSignal } = require_abort_signal();
-	const assert$9 = __require("assert");
+	const assert$9 = require("assert");
 	const kResume = Symbol("resume");
 	var PipelineRequest = class extends Readable$1 {
 		constructor() {
@@ -8554,10 +8552,10 @@ var require_api_pipeline = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 //#region node_modules/undici/lib/api/api-upgrade.js
 var require_api_upgrade = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	const { InvalidArgumentError, RequestAbortedError, SocketError } = require_errors();
-	const { AsyncResource: AsyncResource$1 } = __require("async_hooks");
+	const { AsyncResource: AsyncResource$1 } = require("async_hooks");
 	const util = require_util$6();
 	const { addSignal, removeSignal } = require_abort_signal();
-	const assert$8 = __require("assert");
+	const assert$8 = require("assert");
 	var UpgradeHandler = class extends AsyncResource$1 {
 		constructor(opts, callback) {
 			if (!opts || typeof opts !== "object") throw new InvalidArgumentError("invalid opts");
@@ -8629,7 +8627,7 @@ var require_api_upgrade = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 //#endregion
 //#region node_modules/undici/lib/api/api-connect.js
 var require_api_connect = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-	const { AsyncResource } = __require("async_hooks");
+	const { AsyncResource } = require("async_hooks");
 	const { InvalidArgumentError, RequestAbortedError, SocketError } = require_errors();
 	const util = require_util$6();
 	const { addSignal, removeSignal } = require_abort_signal();
@@ -8758,8 +8756,8 @@ var require_mock_utils = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	const { MockNotMatchedError } = require_mock_errors();
 	const { kDispatches, kMockAgent, kOriginalDispatch, kOrigin, kGetNetConnect } = require_mock_symbols();
 	const { buildURL, nop } = require_util$6();
-	const { STATUS_CODES: STATUS_CODES$1 } = __require("http");
-	const { types: { isPromise } } = __require("util");
+	const { STATUS_CODES: STATUS_CODES$1 } = require("http");
+	const { types: { isPromise } } = require("util");
 	function matchValue(match, value) {
 		if (typeof match === "string") return match === value;
 		if (match instanceof RegExp) return match.test(value);
@@ -9119,7 +9117,7 @@ var require_mock_interceptor = /* @__PURE__ */ __commonJSMin(((exports, module) 
 //#endregion
 //#region node_modules/undici/lib/mock/mock-client.js
 var require_mock_client = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-	const { promisify: promisify$1 } = __require("util");
+	const { promisify: promisify$1 } = require("util");
 	const Client = require_client();
 	const { buildMockDispatch } = require_mock_utils();
 	const { kDispatches, kMockAgent, kClose, kOriginalClose, kOrigin, kOriginalDispatch, kConnected } = require_mock_symbols();
@@ -9163,7 +9161,7 @@ var require_mock_client = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 //#endregion
 //#region node_modules/undici/lib/mock/mock-pool.js
 var require_mock_pool = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-	const { promisify } = __require("util");
+	const { promisify } = require("util");
 	const Pool = require_pool();
 	const { buildMockDispatch } = require_mock_utils();
 	const { kDispatches, kMockAgent, kClose, kOriginalClose, kOrigin, kOriginalDispatch, kConnected } = require_mock_symbols();
@@ -9240,8 +9238,8 @@ var require_pluralizer = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 //#endregion
 //#region node_modules/undici/lib/mock/pending-interceptors-formatter.js
 var require_pending_interceptors_formatter = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-	const { Transform } = __require("stream");
-	const { Console } = __require("console");
+	const { Transform } = require("stream");
+	const { Console } = require("console");
 	/**
 	* Gets the output of `console.table(…)` as a string.
 	*/
@@ -9390,7 +9388,7 @@ ${pendingInterceptorsFormatter.format(pending)}
 //#region node_modules/undici/lib/proxy-agent.js
 var require_proxy_agent = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	const { kProxy, kClose, kDestroy, kInterceptors } = require_symbols$4();
-	const { URL: URL$1 } = __require("url");
+	const { URL: URL$1 } = require("url");
 	const Agent = require_agent();
 	const Pool = require_pool();
 	const DispatcherBase = require_dispatcher_base();
@@ -9527,7 +9525,7 @@ var require_proxy_agent = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 //#endregion
 //#region node_modules/undici/lib/handler/RetryHandler.js
 var require_RetryHandler = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-	const assert$7 = __require("assert");
+	const assert$7 = require("assert");
 	const { kRetryHandlerDefaultRetry } = require_symbols$4();
 	const { RequestRetryError } = require_errors();
 	const { isDisturbed, parseHeaders, parseRangeHeader } = require_util$6();
@@ -9797,9 +9795,9 @@ var require_headers = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	const { kGuard } = require_symbols$3();
 	const { kEnumerableProperty } = require_util$6();
 	const { makeIterator, isValidHeaderName, isValidHeaderValue } = require_util$5();
-	const util$1 = __require("util");
+	const util$1 = require("util");
 	const { webidl } = require_webidl();
-	const assert$6 = __require("assert");
+	const assert$6 = require("assert");
 	const kHeadersMap = Symbol("headers map");
 	const kHeadersSortedMap = Symbol("headers map sorted");
 	/**
@@ -10115,9 +10113,9 @@ var require_response = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	const { getGlobalOrigin } = require_global$1();
 	const { URLSerializer } = require_dataURL();
 	const { kHeadersList, kConstruct } = require_symbols$4();
-	const assert$5 = __require("assert");
-	const { types: types$2 } = __require("util");
-	const ReadableStream = globalThis.ReadableStream || __require("stream/web").ReadableStream;
+	const assert$5 = require("assert");
+	const { types: types$2 } = require("util");
+	const ReadableStream = globalThis.ReadableStream || require("stream/web").ReadableStream;
 	const textEncoder = new TextEncoder("utf-8");
 	var Response = class Response {
 		static error() {
@@ -10414,8 +10412,8 @@ var require_request = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	const { getGlobalOrigin } = require_global$1();
 	const { URLSerializer } = require_dataURL();
 	const { kHeadersList, kConstruct } = require_symbols$4();
-	const assert$4 = __require("assert");
-	const { getMaxListeners, setMaxListeners, getEventListeners, defaultMaxListeners } = __require("events");
+	const assert$4 = require("assert");
+	const { getMaxListeners, setMaxListeners, getEventListeners, defaultMaxListeners } = require("events");
 	let TransformStream = globalThis.TransformStream;
 	const kAbortController = Symbol("abortController");
 	const requestFinalizer = new FinalizationRegistry(({ signal, abort }) => {
@@ -10586,7 +10584,7 @@ var require_request = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 			let finalBody = inputOrInitBody;
 			if (initBody == null && inputBody != null) {
 				if (util.isDisturbed(inputBody.stream) || inputBody.stream.locked) throw new TypeError("Cannot construct a Request with a Request object that has already been used.");
-				if (!TransformStream) TransformStream = __require("stream/web").TransformStream;
+				if (!TransformStream) TransformStream = require("stream/web").TransformStream;
 				const identityTransform = new TransformStream();
 				inputBody.stream.pipeThrough(identityTransform);
 				finalBody = {
@@ -10851,21 +10849,21 @@ var require_fetch = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	const { Response, makeNetworkError, makeAppropriateNetworkError, filterResponse, makeResponse } = require_response();
 	const { Headers } = require_headers();
 	const { Request, makeRequest } = require_request();
-	const zlib = __require("zlib");
+	const zlib = require("zlib");
 	const { bytesMatch, makePolicyContainer, clonePolicyContainer, requestBadPort, TAOCheck, appendRequestOriginHeader, responseLocationURL, requestCurrentURL, setRequestReferrerPolicyOnRedirect, tryUpgradeRequestToAPotentiallyTrustworthyURL, createOpaqueTimingInfo, appendFetchMetadata, corsCheck, crossOriginResourcePolicyCheck, determineRequestsReferrer, coarsenedSharedCurrentTime, createDeferredPromise, isBlobLike, sameOrigin, isCancelled, isAborted, isErrorLike, fullyReadBody, readableStreamClose, isomorphicEncode, urlIsLocal, urlIsHttpHttpsScheme, urlHasHttpsScheme } = require_util$5();
 	const { kState, kHeaders, kGuard, kRealm } = require_symbols$3();
-	const assert$3 = __require("assert");
+	const assert$3 = require("assert");
 	const { safelyExtractBody } = require_body();
 	const { redirectStatusSet, nullBodyStatus, safeMethodsSet, requestBodyHeader, subresourceSet, DOMException } = require_constants$3();
 	const { kHeadersList } = require_symbols$4();
-	const EE = __require("events");
-	const { Readable, pipeline } = __require("stream");
+	const EE = require("events");
+	const { Readable, pipeline } = require("stream");
 	const { addAbortListener, isErrored, isReadable, nodeMajor, nodeMinor } = require_util$6();
 	const { dataURLProcessor, serializeAMimeType } = require_dataURL();
-	const { TransformStream } = __require("stream/web");
+	const { TransformStream } = require("stream/web");
 	const { getGlobalDispatcher } = require_global();
 	const { webidl } = require_webidl();
-	const { STATUS_CODES } = __require("http");
+	const { STATUS_CODES } = require("http");
 	const GET_OR_HEAD = ["GET", "HEAD"];
 	/** @type {import('buffer').resolveObjectURL} */
 	let resolveObjectURL;
@@ -11078,7 +11076,7 @@ var require_fetch = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 		switch (scheme) {
 			case "about:": return Promise.resolve(makeNetworkError("about scheme is not supported"));
 			case "blob:": {
-				if (!resolveObjectURL) resolveObjectURL = __require("buffer").resolveObjectURL;
+				if (!resolveObjectURL) resolveObjectURL = require("buffer").resolveObjectURL;
 				const blobURLEntry = requestCurrentURL(request);
 				if (blobURLEntry.search.length !== 0) return Promise.resolve(makeNetworkError("NetworkError when attempting to fetch resource."));
 				const blobURLEntryObject = resolveObjectURL(blobURLEntry.toString());
@@ -11351,7 +11349,7 @@ var require_fetch = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 		const cancelAlgorithm = (reason) => {
 			fetchParams.controller.abort(reason);
 		};
-		if (!ReadableStream) ReadableStream = __require("stream/web").ReadableStream;
+		if (!ReadableStream) ReadableStream = require("stream/web").ReadableStream;
 		const stream = new ReadableStream({
 			async start(controller) {
 				fetchParams.controller.controller = controller;
@@ -11851,9 +11849,9 @@ var require_util$3 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	const { getEncoding } = require_encoding();
 	const { DOMException } = require_constants$3();
 	const { serializeAMimeType, parseMIMEType } = require_dataURL();
-	const { types: types$1 } = __require("util");
-	const { StringDecoder } = __require("string_decoder");
-	const { btoa } = __require("buffer");
+	const { types: types$1 } = require("util");
+	const { StringDecoder } = require("string_decoder");
+	const { btoa } = require("buffer");
 	/** @type {PropertyDescriptor} */
 	const staticPropertyDescriptors = {
 		enumerable: true,
@@ -12244,7 +12242,7 @@ var require_symbols$1 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 //#endregion
 //#region node_modules/undici/lib/cache/util.js
 var require_util$2 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-	const assert$2 = __require("assert");
+	const assert$2 = require("assert");
 	const { URLSerializer } = require_dataURL();
 	const { isValidHeaderName } = require_util$5();
 	/**
@@ -12291,7 +12289,7 @@ var require_cache = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	const { kState, kHeaders, kGuard, kRealm } = require_symbols$3();
 	const { fetching } = require_fetch();
 	const { urlIsHttpHttpsScheme, createDeferredPromise, readAllBytes } = require_util$5();
-	const assert$1 = __require("assert");
+	const assert$1 = require("assert");
 	const { getGlobalDispatcher } = require_global();
 	/**
 	* @see https://w3c.github.io/ServiceWorker/#dfn-cache-batch-operation
@@ -13009,7 +13007,7 @@ var require_parse = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	const { maxNameValuePairSize, maxAttributeValueSize } = require_constants$1();
 	const { isCTLExcludingHtab } = require_util$1();
 	const { collectASequenceOfCodePointsFast } = require_dataURL();
-	const assert = __require("assert");
+	const assert = require("assert");
 	/**
 	* @description Parses the field-value attributes of a set-cookie header string.
 	* @see https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-rfc6265bis#section-5.4
@@ -13321,7 +13319,7 @@ var require_symbols = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 var require_events = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	const { webidl } = require_webidl();
 	const { kEnumerableProperty } = require_util$6();
-	const { MessagePort } = __require("worker_threads");
+	const { MessagePort } = require("worker_threads");
 	/**
 	* @see https://html.spec.whatwg.org/multipage/comms.html#messageevent
 	*/
@@ -13660,7 +13658,7 @@ var require_util = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 //#endregion
 //#region node_modules/undici/lib/websocket/connection.js
 var require_connection = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-	const diagnosticsChannel$1 = __require("diagnostics_channel");
+	const diagnosticsChannel$1 = require("diagnostics_channel");
 	const { uid, states } = require_constants();
 	const { kReadyState, kSentClose, kByteParser, kReceivedClose } = require_symbols();
 	const { fireEvent, failWebsocketConnection } = require_util();
@@ -13677,7 +13675,7 @@ var require_connection = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	/** @type {import('crypto')} */
 	let crypto;
 	try {
-		crypto = __require("crypto");
+		crypto = require("crypto");
 	} catch {}
 	/**
 	* @see https://websockets.spec.whatwg.org/#concept-websocket-establish
@@ -13800,7 +13798,7 @@ var require_frame = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	/** @type {import('crypto')} */
 	let crypto;
 	try {
-		crypto = __require("crypto");
+		crypto = require("crypto");
 	} catch {}
 	var WebsocketFrameSend = class {
 		/**
@@ -13848,8 +13846,8 @@ var require_frame = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 //#endregion
 //#region node_modules/undici/lib/websocket/receiver.js
 var require_receiver = /* @__PURE__ */ __commonJSMin(((exports, module) => {
-	const { Writable } = __require("stream");
-	const diagnosticsChannel = __require("diagnostics_channel");
+	const { Writable } = require("stream");
+	const diagnosticsChannel = require("diagnostics_channel");
 	const { parserStates, opcodes, states, emptyBuffer } = require_constants();
 	const { kReadyState, kSentClose, kResponse, kReceivedClose } = require_symbols();
 	const { isValidStatusCode, failWebsocketConnection, websocketMessageReceived } = require_util();
@@ -14060,7 +14058,7 @@ var require_websocket = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	const { ByteParser } = require_receiver();
 	const { kEnumerableProperty, isBlobLike } = require_util$6();
 	const { getGlobalDispatcher } = require_global();
-	const { types } = __require("util");
+	const { types } = require("util");
 	let experimentalWarned = false;
 	var WebSocket = class WebSocket extends EventTarget {
 		#events = {
@@ -14381,7 +14379,7 @@ var require_undici = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	const createRedirectInterceptor = require_redirectInterceptor();
 	let hasCrypto;
 	try {
-		__require("crypto");
+		require("crypto");
 		hasCrypto = true;
 	} catch {
 		hasCrypto = false;
@@ -14552,8 +14550,8 @@ var require_lib = /* @__PURE__ */ __commonJSMin(((exports) => {
 	exports.HttpClient = exports.HttpClientResponse = exports.HttpClientError = exports.MediaTypes = exports.Headers = exports.HttpCodes = void 0;
 	exports.getProxyUrl = getProxyUrl;
 	exports.isHttps = isHttps;
-	const http = __importStar(__require("http"));
-	const https = __importStar(__require("https"));
+	const http = __importStar(require("http"));
+	const https = __importStar(require("https"));
 	const pm = __importStar(require_proxy());
 	const tunnel = __importStar(require_tunnel());
 	const undici_1 = require_undici();
@@ -15270,8 +15268,8 @@ var require_summary = /* @__PURE__ */ __commonJSMin(((exports) => {
 	};
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.summary = exports.markdownSummary = exports.SUMMARY_DOCS_URL = exports.SUMMARY_ENV_VAR = void 0;
-	const os_1$1 = __require("os");
-	const fs_1 = __require("fs");
+	const os_1$1 = require("os");
+	const fs_1 = require("fs");
 	const { access, appendFile, writeFile } = fs_1.promises;
 	exports.SUMMARY_ENV_VAR = "GITHUB_STEP_SUMMARY";
 	exports.SUMMARY_DOCS_URL = "https://docs.github.com/actions/using-workflows/workflow-commands-for-github-actions#adding-a-job-summary";
@@ -15582,7 +15580,7 @@ var require_path_utils = /* @__PURE__ */ __commonJSMin(((exports) => {
 	exports.toPosixPath = toPosixPath;
 	exports.toWin32Path = toWin32Path;
 	exports.toPlatformPath = toPlatformPath;
-	const path$5 = __importStar(__require("path"));
+	const path$5 = __importStar(require("path"));
 	/**
 	* toPosixPath converts the given path to the posix form. On Windows, \\ will be
 	* replaced with /.
@@ -15696,8 +15694,8 @@ var require_io_util = /* @__PURE__ */ __commonJSMin(((exports) => {
 	exports.isRooted = isRooted;
 	exports.tryGetExecutablePath = tryGetExecutablePath;
 	exports.getCmdPath = getCmdPath;
-	const fs$2 = __importStar(__require("fs"));
-	const path$4 = __importStar(__require("path"));
+	const fs$2 = __importStar(require("fs"));
+	const path$4 = __importStar(require("path"));
 	_a = fs$2.promises, exports.chmod = _a.chmod, exports.copyFile = _a.copyFile, exports.lstat = _a.lstat, exports.mkdir = _a.mkdir, exports.open = _a.open, exports.readdir = _a.readdir, exports.rename = _a.rename, exports.rm = _a.rm, exports.rmdir = _a.rmdir, exports.stat = _a.stat, exports.symlink = _a.symlink, exports.unlink = _a.unlink;
 	exports.IS_WINDOWS = process.platform === "win32";
 	/**
@@ -15889,8 +15887,8 @@ var require_io = /* @__PURE__ */ __commonJSMin(((exports) => {
 	exports.mkdirP = mkdirP;
 	exports.which = which;
 	exports.findInPath = findInPath;
-	const assert_1$1 = __require("assert");
-	const path$3 = __importStar(__require("path"));
+	const assert_1$1 = require("assert");
+	const path$3 = __importStar(require("path"));
 	const ioUtil = __importStar(require_io_util());
 	/**
 	* Copies a file or folder.
@@ -16139,13 +16137,13 @@ var require_toolrunner = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.ToolRunner = void 0;
 	exports.argStringToArray = argStringToArray;
-	const os$3 = __importStar(__require("os"));
-	const events = __importStar(__require("events"));
-	const child = __importStar(__require("child_process"));
-	const path$2 = __importStar(__require("path"));
+	const os$3 = __importStar(require("os"));
+	const events = __importStar(require("events"));
+	const child = __importStar(require("child_process"));
+	const path$2 = __importStar(require("path"));
 	const io = __importStar(require_io());
 	const ioUtil = __importStar(require_io_util());
-	const timers_1 = __require("timers");
+	const timers_1 = require("timers");
 	const IS_WINDOWS = process.platform === "win32";
 	var ToolRunner = class extends events.EventEmitter {
 		constructor(toolPath, args, options) {
@@ -16551,7 +16549,7 @@ var require_exec = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.exec = exec;
 	exports.getExecOutput = getExecOutput;
-	const string_decoder_1 = __require("string_decoder");
+	const string_decoder_1 = require("string_decoder");
 	const tr = __importStar(require_toolrunner());
 	/**
 	* Exec a command.
@@ -16692,7 +16690,7 @@ var require_platform = /* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.isLinux = exports.isMacOS = exports.isWindows = exports.arch = exports.platform = void 0;
 	exports.getDetails = getDetails;
-	const os_1 = __importDefault(__require("os"));
+	const os_1 = __importDefault(require("os"));
 	const exec = __importStar(require_exec());
 	const getWindowsInfo = () => __awaiter(void 0, void 0, void 0, function* () {
 		const { stdout: version } = yield exec.getExecOutput("powershell -command \"(Get-CimInstance -ClassName Win32_OperatingSystem).Version\"", void 0, { silent: true });
@@ -16838,8 +16836,8 @@ var require_core = /* @__PURE__ */ __commonJSMin(((exports) => {
 	const command_1 = require_command();
 	const file_command_1 = require_file_command();
 	const utils_1 = require_utils$1();
-	const os$2 = __importStar(__require("os"));
-	const path$1 = __importStar(__require("path"));
+	const os$2 = __importStar(require("os"));
+	const path$1 = __importStar(require("path"));
 	const oidc_utils_1 = require_oidc_utils();
 	/**
 	* The code to exit an action
@@ -18112,9 +18110,9 @@ var require_manifest = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 	exports._readLinuxVersionFile = _readLinuxVersionFile;
 	const semver = __importStar(require_semver());
 	const core_1 = require_core();
-	const os$1 = __require("os");
-	const cp = __require("child_process");
-	const fs$1 = __require("fs");
+	const os$1 = require("os");
+	const cp = require("child_process");
+	const fs$1 = require("fs");
 	function _findMatch(versionSpec, stable, candidates, archFilter) {
 		return __awaiter(this, void 0, void 0, function* () {
 			const platFilter = os$1.platform();
@@ -18373,16 +18371,16 @@ var require_tool_cache = /* @__PURE__ */ __commonJSMin(((exports) => {
 	exports.find = find;
 	const core = __importStar(require_core());
 	const io = __importStar(require_io());
-	const crypto = __importStar(__require("crypto"));
-	const fs = __importStar(__require("fs"));
+	const crypto = __importStar(require("crypto"));
+	const fs = __importStar(require("fs"));
 	const mm = __importStar(require_manifest());
-	const os = __importStar(__require("os"));
-	const path = __importStar(__require("path"));
+	const os = __importStar(require("os"));
+	const path = __importStar(require("path"));
 	const httpm = __importStar(require_lib());
 	const semver = __importStar(require_semver());
-	const stream = __importStar(__require("stream"));
-	const util = __importStar(__require("util"));
-	const assert_1 = __require("assert");
+	const stream = __importStar(require("stream"));
+	const util = __importStar(require("util"));
+	const assert_1 = require("assert");
 	const exec_1 = require_exec();
 	const retry_helper_1 = require_retry_helper();
 	var HTTPError = class extends Error {
@@ -18725,8 +18723,8 @@ var require_tool_cache = /* @__PURE__ */ __commonJSMin(((exports) => {
 
 //#endregion
 //#region src/index.ts
-var import_core = /* @__PURE__ */ __toESM(require_core());
-var import_tool_cache = /* @__PURE__ */ __toESM(require_tool_cache());
+var import_core = /* @__PURE__ */ __toESM(require_core(), 1);
+var import_tool_cache = /* @__PURE__ */ __toESM(require_tool_cache(), 1);
 var import_lib = require_lib();
 const latestKnownVersion = "v1.8.1";
 async function run() {
@@ -18784,4 +18782,4 @@ function getDownloadUrl(version) {
 run();
 
 //#endregion
-export { getDownloadUrl };
+exports.getDownloadUrl = getDownloadUrl;
