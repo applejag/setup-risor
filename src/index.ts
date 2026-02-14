@@ -1,6 +1,7 @@
 import * as core from '@actions/core';
 import * as tc from '@actions/tool-cache';
 import { HttpClient } from '@actions/http-client';
+import { Endpoints } from '@octokit/types';
 
 // Used as fallback if getting latest version fails.
 const latestKnownVersion = 'v1.8.1';
@@ -47,10 +48,14 @@ async function extract(file: string) {
 async function findLatestVersion(): Promise<string> {
   try {
     const httpClient = new HttpClient();
-    const response = await httpClient.getJson(
-      'https://github.com/deepnoodle-ai/risor/releases/latest',
-    );
-    const version = response.result.tag_name;
+    const response = await httpClient.getJson<
+      Endpoints['GET /repos/{owner}/{repo}/releases/latest']['response']['data']
+    >('https://github.com/deepnoodle-ai/risor/releases/latest');
+    const version = response.result?.tag_name;
+    if (!version) {
+      core.warning(`No latest Risor release was found. Raw response: ${response.result}`);
+      return latestKnownVersion;
+    }
     core.info(`Found latest version of Risor: ${version}`);
     return version;
   } catch (err) {
