@@ -45,7 +45,7 @@ jobs:
             exit 1
           fi
 
-  test:
+  test-v2:
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -59,6 +59,37 @@ jobs:
 
       - name: Setup Risor
         uses: ./
+        with:
+          version: latest
+
+      - shell: risor {0}
+        run: |
+          let orders = [
+            {status: "pending", total: 10},
+            {status: "pending", total: 30},
+            {status: "completed", total: 550},
+            {status: "cancelled", total: 90},
+            {status: "pending", total: 5},
+          ]
+
+          orders.filter(o => o.status == "pending").map(o => o.total).reduce(0, (a, b) => a + b)
+
+  test-v1:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-latest
+          - macOS-latest
+          - windows-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Setup Risor
+        uses: ./
+        with:
+          version: v1.8.1
 
       - shell: risor {0}
         run: |
