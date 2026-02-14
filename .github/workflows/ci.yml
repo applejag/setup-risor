@@ -62,7 +62,8 @@ jobs:
         with:
           version: latest
 
-      - shell: risor {0}
+      - name: Run Risor script
+        shell: risor {0}
         run: |
           let orders = [
             {status: "pending", total: 10},
@@ -91,7 +92,8 @@ jobs:
         with:
           version: v1.8.1
 
-      - shell: risor {0}
+      - name: Run Risor script
+        shell: risor {0}
         run: |
           array := ["gophers", "are", "burrowing", "rodents"]
 
