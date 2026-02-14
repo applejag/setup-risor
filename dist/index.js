@@ -18723,8 +18723,8 @@ var require_tool_cache = /* @__PURE__ */ __commonJSMin(((exports) => {
 
 //#endregion
 //#region src/index.ts
-var import_core = /* @__PURE__ */ __toESM(require_core(), 1);
-var import_tool_cache = /* @__PURE__ */ __toESM(require_tool_cache(), 1);
+var import_core = /* @__PURE__ */ __toESM(require_core());
+var import_tool_cache = /* @__PURE__ */ __toESM(require_tool_cache());
 var import_lib = require_lib();
 const latestKnownVersion = "v1.8.1";
 async function run() {
