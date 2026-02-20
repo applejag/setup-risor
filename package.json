@@ -28,14 +28,14 @@
   "homepage": "https://github.com/applejag/setup-risor#readme",
   "dependencies": {
     "@actions/core": "^3.0.0",
-    "@actions/http-client": "^3.0.0",
+    "@actions/http-client": "^4.0.0",
     "@actions/tool-cache": "^4.0.0"
   },
   "devDependencies": {
     "@octokit/types": "^16.0.0",
     "@types/node": "^25.2.3",
-    "oxfmt": "^0.32.0",
-    "oxlint": "^1.47.0",
+    "oxfmt": "^0.33.0",
+    "oxlint": "^1.48.0",
     "rolldown": "^1.0.0-rc.4"
   }
 }
