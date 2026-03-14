@@ -4,7 +4,7 @@ import { HttpClient } from '@actions/http-client';
 import { Endpoints } from '@octokit/types';
 
 // Used as fallback if getting latest version fails.
-const latestKnownVersion = 'v2.0.1';
+const latestKnownVersion = 'v2.1.0';
 
 async function run() {
   const cache = core.getBooleanInput('cache');

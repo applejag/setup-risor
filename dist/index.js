@@ -19037,7 +19037,7 @@ function _getGlobal(key, defaultValue) {
 }
 //#endregion
 //#region src/index.ts
-const latestKnownVersion = "v2.0.1";
+const latestKnownVersion = "v2.1.0";
 async function run() {
 	const cache = getBooleanInput("cache");
 	var version = getInput("version", { required: true });
