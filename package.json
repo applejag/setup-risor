@@ -36,6 +36,6 @@
     "@types/node": "^25.5.0",
     "oxfmt": "^0.41.0",
     "oxlint": "^1.56.0",
-    "rolldown": "^1.0.0-rc.9"
+    "rolldown": "^1.0.0-rc.11"
   }
 }
