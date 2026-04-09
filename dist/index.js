@@ -3906,6 +3906,12 @@ var require_util$6 = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 				if (isURLPotentiallyTrustworthy(referrerURL) && !isURLPotentiallyTrustworthy(currentURL)) return "no-referrer";
 				return referrerOrigin;
 			}
+			/**
+			* 1. If referrerURL is a potentially trustworthy URL and
+			* request’s current URL is not a potentially trustworthy URL,
+			* then return no referrer.
+			* 2. Return referrerOrigin
+			*/
 			default: return isNonPotentiallyTrustWorthy ? "no-referrer" : referrerOrigin;
 		}
 	}
@@ -18329,6 +18335,7 @@ var require_min_version = /* @__PURE__ */ __commonJSMin(((exports, module) => {
 						break;
 					case "<":
 					case "<=": break;
+					/* istanbul ignore next */
 					default: throw new Error(`Unexpected operation: ${comparator.operator}`);
 				}
 			});
