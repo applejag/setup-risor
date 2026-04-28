@@ -27,15 +27,15 @@
   },
   "homepage": "https://github.com/applejag/setup-risor#readme",
   "dependencies": {
-    "@actions/core": "^3.0.0",
-    "@actions/http-client": "^4.0.0",
+    "@actions/core": "^3.0.1",
+    "@actions/http-client": "^4.0.1",
     "@actions/tool-cache": "^4.0.0"
   },
   "devDependencies": {
     "@octokit/types": "^16.0.0",
-    "@types/node": "^25.5.2",
-    "oxfmt": "^0.43.0",
-    "oxlint": "^1.58.0",
-    "rolldown": "^1.0.0-rc.13"
+    "@types/node": "^25.6.0",
+    "oxfmt": "^0.47.0",
+    "oxlint": "^1.62.0",
+    "rolldown": "^1.0.0-rc.17"
   }
 }
