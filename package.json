@@ -33,9 +33,9 @@
   },
   "devDependencies": {
     "@octokit/types": "^16.0.0",
-    "@types/node": "^25.6.0",
-    "oxfmt": "^0.47.0",
-    "oxlint": "^1.62.0",
-    "rolldown": "^1.0.0-rc.18"
+    "@types/node": "^25.7.0",
+    "oxfmt": "^0.49.0",
+    "oxlint": "^1.64.0",
+    "rolldown": "^1.0.0"
   }
 }
